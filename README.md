@@ -1,7 +1,7 @@
 SafePass - Password Manager (Beta)
 ========
 
-SafePass is a password manager for Android that lets users securely store their passwords. The application utilizes password based encryption (AES-256). The user intially sets up a master password, which grants entry into the application. The master password is never stored, and all the encryption is done locally on the device.
+SafePass is a password manager for Android that lets users securely store their login information, credit card details, and notes. The application utilizes password based encryption (AES-256). The user intially sets up a master password, which grants entry into the application. The master password is never stored, and all the encryption is done locally on the device.
 
 <h2>Beta Version Features</h2>
 1) Store passwords/login information <br>
