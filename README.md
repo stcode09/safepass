@@ -23,16 +23,19 @@ A: Simply swipe left/right to navigate within the application <br>
 <b>2) How do I add a new entry (login, wallet, note)?</b><br>
 A: Navigate to the respective window and click on the "+" icon <br>
 
-<b>3) How do I delete a selected entry?</b><br>
+<b>3) How do I view a selected entry?</b><br>
+A: Simply tap on the deired entry<br>
+
+<b>4) How do I delete a selected entry?</b><br>
 A: Long-click on the desired entry (you can select multiple entries) and click on the delete icon <br>
 
-<b>4) How do I edit a selected entry?</b><br>
+<b>5) How do I edit a selected entry?</b><br>
 A: Click on the edit icon of the particular entry <br>
 
-<b>5) How do I copy saved data?</b><br>
+<b>6) How do I copy saved data?</b><br>
 A: Click on the copy icon of the particular entry. This copies the primary field of the enrty. For access to advanced copy menu, long-click on the copy icon and select the desired field to copy.<br>
 
-<b>6) How do I generate a new password?</b><br>
+<b>7) How do I generate a new password?</b><br>
 A: Click on the generate password icon located next to the password field. This generates a random password. To change password generator settings, long-click on the icon and select the deired settings. The password generator is set to generate "very strong" passwords by default. <br>
 
 <h3> Install </h3>
