@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="activities.safepassbeta" >
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/android:Theme.Holo" >
+        <activity
+            android:name=".SetupAndLoginActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".DashboardActivity"
+            android:label="@string/title_activity_dashboard"
+            android:parentActivityName=".SetupAndLoginActivity"
+            android:screenOrientation="portrait" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="activities.safepassbeta.SetupAndLoginActivity" />
+        </activity>
+        <activity
+            android:name=".AddLoginsActivity"
+            android:label="@string/title_activity_add_entries"
+            android:parentActivityName=".DashboardActivity"
+            android:screenOrientation="portrait" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="activities.safepassbeta.DashboardActivity" />
+        </activity>
+        <activity
+            android:name=".AddWalletActivity"
+            android:label="@string/title_activity_add_wallet"
+            android:parentActivityName=".DashboardActivity"
+            android:screenOrientation="portrait" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="activities.safepassbeta.DashboardActivity" />
+        </activity>
+        <activity
+            android:name=".AddNotesActivity"
+            android:label="@string/title_activity_add_notes"
+            android:parentActivityName=".DashboardActivity"
+            android:screenOrientation="portrait" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="activities.safepassbeta.DashboardActivity" />
+        </activity>
+    </application>
+
+</manifest>

@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:fillViewport="false">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true">
+
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:ems="10"
+                android:id="@+id/add_wallet_label"
+                android:layout_marginTop="15dp"
+                android:layout_marginLeft="9dp"
+                android:layout_marginRight="10dp"
+                android:layout_gravity="center_horizontal"
+                android:hint="@string/add_label"
+                android:fontFamily="sans-serif"
+                />
+
+            <AutoCompleteTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:ems="10"
+                android:id="@+id/add_card_type"
+                android:layout_marginTop="15dp"
+                android:layout_marginLeft="9dp"
+                android:layout_marginRight="10dp"
+                android:layout_gravity="center_horizontal"
+                android:hint="Card Type"
+                android:fontFamily="sans-serif"
+                />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:ems="10"
+                android:id="@+id/add_wallet_name"
+                android:layout_marginTop="15dp"
+                android:layout_marginLeft="9dp"
+                android:layout_marginRight="10dp"
+                android:layout_gravity="center_horizontal"
+                android:hint="Name on Card"
+                android:fontFamily="sans-serif"
+                />
+
+
+
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_marginTop="15dp"
+                android:layout_height="wrap_content" >
+
+                <EditText
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberSigned"
+                    android:ems="10"
+                    android:maxLength="19"
+                    android:id="@+id/add_number"
+                    android:layout_marginLeft="9dp"
+                    android:layout_marginStart="9dp"
+                    android:layout_toStartOf="@+id/view_number"
+                    android:layout_toLeftOf="@+id/view_number"
+                    android:layout_gravity="center_horizontal"
+                    android:hint="Credit Card Number"
+                    android:fontFamily="sans-serif"
+                    />
+
+                <ImageButton
+                    android:id="@+id/view_number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_action_device_access_secure"
+                    android:padding="3dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@null"
+                    android:onClick="viewNumber"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_alignParentTop="true"/>
+
+            </RelativeLayout>
+
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="5dp">
+
+            <EditText
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:inputType="numberSigned"
+                android:ems="10"
+                android:id="@+id/add_expiration"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="9dp"
+                android:layout_marginStart="9dp"
+                android:layout_gravity="start"
+                android:maxLength="5"
+                android:hint="Expiration"
+                android:fontFamily="sans-serif"
+                />
+
+            <EditText
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:inputType="numberSigned"
+                android:ems="10"
+                android:id="@+id/add_security_code"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_gravity="start"
+                android:maxLength="4"
+                android:hint="Security Code"
+                android:fontFamily="sans-serif"
+                />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </RelativeLayout>
+</ScrollView>
+
+
+
