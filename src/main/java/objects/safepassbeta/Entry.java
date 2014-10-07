@@ -4,4 +4,7 @@ package objects.safepassbeta;
 public interface Entry {
     @Override
     String toString();
+
+    @Override
+    boolean equals(Object o);
 }

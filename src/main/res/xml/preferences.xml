@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory
+        android:title="General"
+        android:key="pref_general">
+        <ListPreference
+            android:key="tries_list"
+            android:title="@string/pref_title_tries"
+            android:defaultValue="3"
+            android:entries="@array/pref_tries_list_values_hr"
+            android:entryValues="@array/pref_tries_list_values"
+            android:negativeButtonText="@null"
+            android:positiveButtonText="@null" />
+        <ListPreference
+            android:key="autolock_list"
+            android:title="@string/pref_title_autolock"
+            android:defaultValue="60"
+            android:entries="@array/pref_autolock_list_values_hr"
+            android:entryValues="@array/pref_autolock_list_values"
+            android:negativeButtonText="@null"
+            android:positiveButtonText="@null" />
+        <CheckBoxPreference
+            android:key="clear_clipboard"
+            android:title="Clear Clipboard"
+            android:defaultValue="false"
+            android:summary="Clear clipboard when the application exits"
+            />
+        <CheckBoxPreference
+            android:key="merge_duplicates"
+            android:title="Merge Duplicates"
+            android:defaultValue="true"
+            android:summary="Merge duplicate entries when importing from backup"
+            />
+    </PreferenceCategory>
+    <PreferenceCategory
+        android:title="Password Generator"
+        android:key="pref_password_generator">
+        <CheckBoxPreference
+            android:key="use_lowercase"
+            android:title="Lowercase Characters"
+            android:defaultValue="true"
+            android:summary="Use lowercase characters (a-z) to generate password"
+        />
+        <CheckBoxPreference
+            android:key="use_uppercase"
+            android:title="Uppercase Characters"
+            android:defaultValue="true"
+            android:summary="Use uppercase characters (A-Z) to generate password"
+            />
+        <CheckBoxPreference
+            android:key="use_numbers"
+            android:title="Numbers"
+            android:defaultValue="true"
+            android:summary="Use numbers (0-9) to generate password"
+            />
+        <CheckBoxPreference
+            android:key="use_special"
+            android:title="Special Characters"
+            android:defaultValue="true"
+            android:summary="Use special characters to generate password"
+            />
+        <activities.safepassbeta.PasswordLengthPreference
+            android:key="password_length"
+            android:title="Password Length"
+            android:dialogTitle="Password Length"
+            android:summary="Length"
+            android:persistent="true"
+            android:defaultValue="10"/>
+    </PreferenceCategory>
+    <PreferenceCategory
+        android:title="About"
+        android:key="pref_about">
+        <ListPreference
+            android:key="backup_location"
+            android:title="Backup Location"
+            android:enabled="false"
+            />
+        <ListPreference
+            android:title="Version"
+            android:summary="v0.7.2"
+            android:enabled="false"/>
+        </PreferenceCategory>
+</PreferenceScreen>

@@ -1,5 +1,9 @@
 package objects.safepassbeta;
 
+import android.util.Log;
+
+import utilities.safepassbeta.Utility;
+
 public class LoginEntry implements Entry{
 
     private String label;
@@ -51,5 +55,10 @@ public class LoginEntry implements Entry{
     @Override
     public String toString() {
         return getLabel() + "<=>" + getUsername() + "<=>" + getPassword() + "<=>" + getWebsite() + "<=>" + getComments();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        return o.getClass().getSimpleName().equals(this.getClass().getSimpleName()) && this.toString().equals(o.toString());
     }
 }

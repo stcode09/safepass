@@ -46,11 +46,13 @@ public class AddLoginsActivity extends Activity {
 
     // Local variables
     private boolean isVisible = false;
-    private boolean lowercase = true;
-    private boolean uppercase = true;
-    private boolean digits = true;
-    private boolean special = true;
-    private int length = 10;
+    private boolean lowercase;
+    private boolean uppercase;
+    private boolean digits;
+    private boolean special;
+    private int length;
+
+    private boolean onRestart = false;
 
     // On back button pressed, show lock screen
     @Override
@@ -71,7 +73,17 @@ public class AddLoginsActivity extends Activity {
         super.onRestart();
         Intent returnIntent = new Intent();
         setResult(RESULT_CANCELED, returnIntent);
+        onRestart = true;
         finish();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        if(!onRestart) {
+            // Toast.makeText(getApplicationContext(), "on Pause", Toast.LENGTH_SHORT).show();
+            Utility.currentTime = System.currentTimeMillis() / 1000;
+        }
     }
 
     // call super.onResume
@@ -97,6 +109,13 @@ public class AddLoginsActivity extends Activity {
         Intent intent = getIntent();
         int val = intent.getIntExtra(Utility.EDIT_MODE, -1);
         boolean viewMode = intent.getBooleanExtra(Utility.VIEW_MODE, false);
+
+        SharedPreferences sharedPreferences = getSharedPreferences(Utility.PREFS_FILE, MODE_PRIVATE);
+        lowercase = sharedPreferences.getBoolean("use_lowercase", true);
+        uppercase = sharedPreferences.getBoolean("use_uppercase", true);
+        digits = sharedPreferences.getBoolean("use_numbers", true);
+        special = sharedPreferences.getBoolean("use_special", true);
+        length = sharedPreferences.getInt("password_length", 10);
 
         // Text-fields
         final EditText label = (EditText) findViewById(R.id.add_label);
@@ -365,7 +384,7 @@ public class AddLoginsActivity extends Activity {
 
         FileManager.writeData(getApplicationContext(), Utility.DATA1_FILE, Utility.LOGIN);
 
-        SharedPreferences.Editor editor = getSharedPreferences(Utility.PREFS_FILE, MODE_PRIVATE).edit();
+        SharedPreferences.Editor editor = getSharedPreferences(Utility.SYS_PREFS_FILE, MODE_PRIVATE).edit();
         editor.putBoolean(Utility.DATA1, true).apply();
         Intent returnIntent = new Intent();
         setResult(RESULT_OK, returnIntent);

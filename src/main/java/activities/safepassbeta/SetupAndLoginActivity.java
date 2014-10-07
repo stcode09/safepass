@@ -1,12 +1,17 @@
 package activities.safepassbeta;
 
 import android.app.Activity;
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Paint;
 import android.os.Bundle;
+import android.os.Environment;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -14,6 +19,7 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.io.File;
 import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
@@ -53,6 +59,17 @@ public class SetupAndLoginActivity extends Activity {
         super.onResume();
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        SharedPreferences sharedPreferences = getSharedPreferences(Utility.PREFS_FILE, MODE_PRIVATE);
+        if(sharedPreferences.getBoolean("clear_clipboard", false)) {
+            ClipboardManager clipboardManager = (ClipboardManager) getApplicationContext().getSystemService(Context.CLIPBOARD_SERVICE);
+            ClipData clipData = ClipData.newPlainText("", "");
+            clipboardManager.setPrimaryClip(clipData);
+            Toast.makeText(getApplicationContext(), "Clipboard cleared", Toast.LENGTH_SHORT).show();
+        }
+    }
 
     // Show lock screen if returning from background or another activity
     @Override
@@ -72,13 +89,14 @@ public class SetupAndLoginActivity extends Activity {
         super.onCreate(savedInstanceState);
 
         // Get preferences file
-        SharedPreferences sharedPreferences = getSharedPreferences(Utility.PREFS_FILE, MODE_PRIVATE);
+        SharedPreferences sharedPreferences = getSharedPreferences(Utility.SYS_PREFS_FILE, MODE_PRIVATE);
 
         // Check whether the app is running for the first time
         boolean isFirstRun = sharedPreferences.getBoolean(Utility.FIRST_RUN, true);
 
+        SharedPreferences sharedPreferences1 = getSharedPreferences(Utility.PREFS_FILE, MODE_PRIVATE);
         // Get number of allowed tries before locking the app
-        Utility.tries = sharedPreferences.getInt(Utility.TRIES, 0);
+        Utility.tries = Integer.parseInt(sharedPreferences1.getString(Utility.TRIES, "3"));
         tries = Utility.tries;
 
         // If first run
@@ -217,16 +235,21 @@ public class SetupAndLoginActivity extends Activity {
             String str1 = masterPass.getText().toString();
 
             // Get preferences file editor
-            SharedPreferences.Editor editor = getSharedPreferences(Utility.PREFS_FILE, MODE_PRIVATE).edit();
+            SharedPreferences.Editor editor = getSharedPreferences(Utility.SYS_PREFS_FILE, MODE_PRIVATE).edit();
 
             // Edit values
             editor.putBoolean(Utility.FIRST_RUN, false);
             editor.putString(Utility.TOKEN1, Crypto.computeHash(str1));
-            editor.putInt(Utility.TRIES, 3);
             editor.apply();
 
             // Set str1
             Utility.str1 = str1;
+
+            // Create app directory
+            if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)){
+                File directory = new File(Environment.getExternalStorageDirectory()+File.separator+Utility.BACKUP_FOLDER);
+                directory.mkdirs();
+            }
 
             // Show loading dialog
             LoadingDialog.show(SetupAndLoginActivity.this, new Callable<Integer>() {
@@ -249,7 +272,7 @@ public class SetupAndLoginActivity extends Activity {
         View parent = view.getRootView();
 
         // Get preferences file
-        SharedPreferences sharedPreferences = getSharedPreferences(Utility.PREFS_FILE, MODE_PRIVATE);
+        SharedPreferences sharedPreferences = getSharedPreferences(Utility.SYS_PREFS_FILE, MODE_PRIVATE);
 
         // Fields
         final EditText enterPass = (EditText) parent.findViewById(R.id.enter_pass);
@@ -283,14 +306,14 @@ public class SetupAndLoginActivity extends Activity {
     private int handleLogin() {
 
         // Get preferences file
-        SharedPreferences sharedPreferences = getSharedPreferences(Utility.PREFS_FILE, MODE_PRIVATE);
+        SharedPreferences sharedPreferences = getSharedPreferences(Utility.SYS_PREFS_FILE, MODE_PRIVATE);
         boolean hasLogin = sharedPreferences.getBoolean(Utility.DATA1, false);
         boolean hasWallet = sharedPreferences.getBoolean(Utility.DATA2, false);
         boolean hasNote = sharedPreferences.getBoolean(Utility.DATA3, false);
 
         if(hasLogin && Utility.loginEntryList.size() == 0) {
             try {
-                FileManager.readData(getApplicationContext(), Utility.DATA1_FILE, Utility.LOGIN);
+                FileManager.readData(getApplicationContext(), Utility.DATA1_FILE, Utility.LOGIN, false, null, false);
             } catch (NoSuchPaddingException e) {
                 e.printStackTrace();
             } catch (InvalidKeyException e) {
@@ -310,7 +333,7 @@ public class SetupAndLoginActivity extends Activity {
 
         if(hasWallet && Utility.walletEntryList.size() == 0) {
             try {
-                FileManager.readData(getApplicationContext(), Utility.DATA2_FILE, Utility.WALLET);
+                FileManager.readData(getApplicationContext(), Utility.DATA2_FILE, Utility.WALLET, false, null, false);
             } catch (NoSuchPaddingException e) {
                 e.printStackTrace();
             } catch (InvalidKeyException e) {
@@ -330,7 +353,7 @@ public class SetupAndLoginActivity extends Activity {
 
         if(hasNote && Utility.noteEntryList.size() == 0) {
             try {
-                FileManager.readData(getApplicationContext(), Utility.DATA3_FILE, Utility.NOTE);
+                FileManager.readData(getApplicationContext(), Utility.DATA3_FILE, Utility.NOTE, false, null, false);
             } catch (NoSuchPaddingException e) {
                 e.printStackTrace();
             } catch (InvalidKeyException e) {

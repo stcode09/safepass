@@ -63,5 +63,10 @@ public class WalletEntry implements Entry {
                 + getExpiration() + "<=>" + getSecurityCode();
     }
 
+    @Override
+    public boolean equals(Object o) {
+        return o.getClass().getSimpleName().equals(this.getClass().getSimpleName()) && this.toString().equals(o.toString());
+    }
+
 }
 

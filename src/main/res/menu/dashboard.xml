@@ -1,9 +1,27 @@
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:context="activities.safepassbeta.DashboardActivity" >
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item android:id="@+id/action_clear"
+        android:title="Clear Clipboard"
+        android:showAsAction="never"/>
 
     <item android:id="@+id/action_settings"
         android:title="@string/action_settings"
-        android:orderInCategory="100"
         android:showAsAction="never" />
+
+    <item android:id="@+id/action_reset_password"
+        android:title="Reset Password"
+        android:showAsAction="never" />
+
+    <item android:id="@+id/action_export"
+        android:title="Export Backup"
+        android:showAsAction="never" />
+
+    <item android:id="@+id/action_import"
+        android:title="Import Backup"
+        android:showAsAction="never" />
+
+    <item android:id="@+id/action_help"
+        android:title="Help/FAQ"
+        android:showAsAction="never" />
+
 </menu>

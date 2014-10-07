@@ -26,4 +26,9 @@ public class NoteEntry implements Entry {
         return getTitle() + "<=>" + getNote();
     }
 
+    @Override
+    public boolean equals(Object o) {
+        return o.getClass().getSimpleName().equals(this.getClass().getSimpleName()) && this.toString().equals(o.toString());
+    }
+
 }

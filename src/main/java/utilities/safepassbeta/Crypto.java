@@ -21,6 +21,13 @@ import javax.crypto.spec.SecretKeySpec;
 
 public class Crypto {
 
+    // Variables
+    private final static int MIN_LENGTH = 8;
+    private final static int iterations = 1024;
+    private final static int key_length1 = 256;
+    private final static int key_length2 = 512;
+    private final static byte[] obfuscate = new byte[] {0x55, 0x49};
+
     // Computes a PBKDF2WithHmacSHA1 hash
     public static String computeHash(String str) throws NoSuchAlgorithmException, InvalidKeySpecException {
         byte[] salt = generateSalt(key_length2 / 8);

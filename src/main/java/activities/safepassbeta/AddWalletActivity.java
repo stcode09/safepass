@@ -40,6 +40,7 @@ public class AddWalletActivity extends Activity {
     // Local variables
     private boolean isVisible = false;
     private String cardNumber = "";
+    private boolean onRestart = false;
 
     // On back button pressed, show lock screen
     @Override
@@ -60,7 +61,17 @@ public class AddWalletActivity extends Activity {
         super.onRestart();
         Intent returnIntent = new Intent();
         setResult(RESULT_CANCELED, returnIntent);
+        onRestart = true;
         finish();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        if(!onRestart) {
+            // Toast.makeText(getApplicationContext(), "on Pause", Toast.LENGTH_SHORT).show();
+            Utility.currentTime = System.currentTimeMillis() / 1000;
+        }
     }
 
     // call super.onResume
@@ -294,7 +305,7 @@ public class AddWalletActivity extends Activity {
 
         FileManager.writeData(getApplicationContext(), Utility.DATA2_FILE, Utility.WALLET);
 
-        SharedPreferences.Editor editor = getSharedPreferences(Utility.PREFS_FILE, MODE_PRIVATE).edit();
+        SharedPreferences.Editor editor = getSharedPreferences(Utility.SYS_PREFS_FILE, MODE_PRIVATE).edit();
         editor.putBoolean(Utility.DATA2, true).apply();
         Intent returnIntent = new Intent();
         setResult(RESULT_OK, returnIntent);

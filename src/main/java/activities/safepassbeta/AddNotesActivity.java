@@ -32,6 +32,8 @@ import utilities.safepassbeta.Utility;
 // Activity to handle adding notes
 public class AddNotesActivity extends Activity {
 
+    private boolean onRestart = false;
+
     // On back button pressed, show lock screen
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event)  {
@@ -51,7 +53,17 @@ public class AddNotesActivity extends Activity {
         super.onRestart();
         Intent returnIntent = new Intent();
         setResult(RESULT_CANCELED, returnIntent);
+        onRestart = true;
         finish();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        if(!onRestart) {
+            // Toast.makeText(getApplicationContext(), "on Pause", Toast.LENGTH_SHORT).show();
+            Utility.currentTime = System.currentTimeMillis() / 1000;
+        }
     }
 
     // call super.onResume
@@ -160,7 +172,7 @@ public class AddNotesActivity extends Activity {
 
         FileManager.writeData(getApplicationContext(), Utility.DATA3_FILE, Utility.NOTE);
 
-        SharedPreferences.Editor editor = getSharedPreferences(Utility.PREFS_FILE, MODE_PRIVATE).edit();
+        SharedPreferences.Editor editor = getSharedPreferences(Utility.SYS_PREFS_FILE, MODE_PRIVATE).edit();
         editor.putBoolean(Utility.DATA3, true).apply();
         Intent returnIntent = new Intent();
         setResult(RESULT_OK, returnIntent);
