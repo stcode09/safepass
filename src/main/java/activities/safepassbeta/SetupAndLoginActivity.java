@@ -21,6 +21,8 @@ import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.Callable;
 
 import javax.crypto.BadPaddingException;
@@ -245,6 +247,15 @@ public class SetupAndLoginActivity extends Activity {
                 directory.mkdirs();
             }
 
+            List<String> s = new ArrayList<String>() {{
+                    add("");
+            }};
+
+            // Create files
+            FileManager.writeToFile(getApplicationContext(), Utility.DATA1_FILE, s);
+            FileManager.writeToFile(getApplicationContext(), Utility.DATA2_FILE, s);
+            FileManager.writeToFile(getApplicationContext(), Utility.DATA3_FILE, s);
+
             // Show loading dialog
             LoadingDialog.show(SetupAndLoginActivity.this, new Callable<Integer>() {
                 @Override
@@ -299,13 +310,7 @@ public class SetupAndLoginActivity extends Activity {
     // Handle login
     private int handleLogin() {
 
-        // Get preferences file
-        SharedPreferences sharedPreferences = getSharedPreferences(Utility.SYS_PREFS_FILE, MODE_PRIVATE);
-        boolean hasLogin = sharedPreferences.getBoolean(Utility.DATA1, false);
-        boolean hasWallet = sharedPreferences.getBoolean(Utility.DATA2, false);
-        boolean hasNote = sharedPreferences.getBoolean(Utility.DATA3, false);
-
-        if(hasLogin && Utility.loginEntryList.size() == 0) {
+        if(Utility.loginEntryList.size() == 0) {
             try {
                 FileManager.readData(getApplicationContext(), Utility.DATA1_FILE, Utility.LOGIN, false, null, false);
             } catch (NoSuchPaddingException e) {
@@ -325,7 +330,7 @@ public class SetupAndLoginActivity extends Activity {
             }
         }
 
-        if(hasWallet && Utility.walletEntryList.size() == 0) {
+        if(Utility.walletEntryList.size() == 0) {
             try {
                 FileManager.readData(getApplicationContext(), Utility.DATA2_FILE, Utility.WALLET, false, null, false);
             } catch (NoSuchPaddingException e) {
@@ -345,7 +350,7 @@ public class SetupAndLoginActivity extends Activity {
             }
         }
 
-        if(hasNote && Utility.noteEntryList.size() == 0) {
+        if(Utility.noteEntryList.size() == 0) {
             try {
                 FileManager.readData(getApplicationContext(), Utility.DATA3_FILE, Utility.NOTE, false, null, false);
             } catch (NoSuchPaddingException e) {

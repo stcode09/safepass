@@ -1,5 +1,7 @@
 package objects.safepassbeta;
 
+import utilities.safepassbeta.Utility;
+
 public class NoteEntry implements Entry {
 
     private String title;
@@ -10,7 +12,7 @@ public class NoteEntry implements Entry {
     }
 
     public void setTitle(String title) {
-        this.title = title;
+        this.title = Utility.unStrip(title);
     }
 
     public String getNote() {
@@ -18,12 +20,12 @@ public class NoteEntry implements Entry {
     }
 
     public void setNote(String note) {
-        this.note = note;
+        this.note = Utility.unStrip(note);
     }
 
     @Override
     public String toString() {
-        return getTitle() + "<=>" + getNote();
+        return Utility.strip(getTitle()) + "<=>" + Utility.strip(getNote());
     }
 
     @Override

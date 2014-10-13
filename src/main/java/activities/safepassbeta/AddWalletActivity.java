@@ -303,9 +303,6 @@ public class AddWalletActivity extends Activity {
         }
 
         FileManager.writeData(getApplicationContext(), Utility.DATA2_FILE, Utility.WALLET);
-
-        SharedPreferences.Editor editor = getSharedPreferences(Utility.SYS_PREFS_FILE, MODE_PRIVATE).edit();
-        editor.putBoolean(Utility.DATA2, true).apply();
         Intent returnIntent = new Intent();
         setResult(RESULT_OK, returnIntent);
         Utility.fromAdd = true;

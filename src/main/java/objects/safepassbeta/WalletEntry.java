@@ -1,5 +1,7 @@
 package objects.safepassbeta;
 
+import utilities.safepassbeta.Utility;
+
 public class WalletEntry implements Entry {
 
     private String label;
@@ -14,7 +16,7 @@ public class WalletEntry implements Entry {
     }
 
     public void setLabel(String label) {
-        this.label = label;
+        this.label = Utility.unStrip(label);
     }
 
     public String getCardType() {
@@ -22,7 +24,7 @@ public class WalletEntry implements Entry {
     }
 
     public void setCardType(String cardType) {
-        this.cardType = cardType;
+        this.cardType = Utility.unStrip(cardType);
     }
 
     public String getNameOnCard() {
@@ -30,7 +32,7 @@ public class WalletEntry implements Entry {
     }
 
     public void setNameOnCard(String nameOnCard) {
-        this.nameOnCard = nameOnCard;
+        this.nameOnCard = Utility.unStrip(nameOnCard);
     }
 
     public String getNumber() {
@@ -38,7 +40,7 @@ public class WalletEntry implements Entry {
     }
 
     public void setNumber(String number) {
-        this.number = number;
+        this.number = Utility.unStrip(number);
     }
 
     public String getExpiration() {
@@ -46,7 +48,7 @@ public class WalletEntry implements Entry {
     }
 
     public void setExpiration(String expiration) {
-        this.expiration = expiration;
+        this.expiration = Utility.unStrip(expiration);
     }
 
     public String getSecurityCode() {
@@ -54,13 +56,13 @@ public class WalletEntry implements Entry {
     }
 
     public void setSecurityCode(String securityCode) {
-        this.securityCode = securityCode;
+        this.securityCode = Utility.unStrip(securityCode);
     }
 
     @Override
     public String toString() {
-        return getLabel() + "<=>" + getCardType() + "<=>" + getNameOnCard() + "<=>" + getNumber() + "<=>"
-                + getExpiration() + "<=>" + getSecurityCode();
+        return Utility.strip(getLabel()) + "<=>" + Utility.strip(getCardType()) + "<=>" + Utility.strip(getNameOnCard()) + "<=>" + Utility.strip(getNumber()) + "<=>"
+                + Utility.strip(getExpiration()) + "<=>" + Utility.strip(getSecurityCode());
     }
 
     @Override
