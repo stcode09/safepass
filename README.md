@@ -17,14 +17,18 @@ SafePass is a password manager for Android devices that lets users securely stor
 11) Reset master password. <br>
  
 <h2>Security Features</h2>
-• The application encrypts all user data with AES-256 bit encryption. <br>
-• The key to encrypt the data is derived from the Master Password using a Password Based Key Derivation Function (PBKDF2 with Hmac SHA1). The key is salted with a randomly generated 256-bit salt using Java's SecureRandom class. The encryption is performed with 1024 iterations to encrypt the data. This makes brute force attacks more difficult. <br>
-• The Master Password is never stored. Instead, it transformed into a 512-bit salted hash (using PBKDF2 with Hmac SHA1). The result is then hashed 1024 times. The salt helps to protect from offline dictionary attacks and the 1024 iterations makes brute force attacks more difficult. <br>
-• The app auto-locks to prevent a security breach (customizable). <br>
-• Clears the clipboard after exiting the application (customizable). <br>
-• Limited number of login attempts to prevent a security breach (customizable). <br>
-• No internet access permission used. Only permissions used are to read and write to external storage (to support import and export of backups). <br>
+<ul>
+<li>The application encrypts all user data with AES-256 bit encryption. </li>
+<li>The key to encrypt the data is derived from the Master Password using a Password Based Key Derivation Function (PBKDF2 with Hmac SHA1). The key is salted with a randomly generated 256-bit salt using Java's SecureRandom class. The encryption is performed with 1024 iterations to encrypt the data. This makes brute force attacks more difficult. </li>
+<li>The Master Password is never stored. Instead, it transformed into a 512-bit salted hash (using PBKDF2 with Hmac SHA1). The result is then hashed 1024 times. The salt helps to protect from offline dictionary attacks and the 1024 iterations makes brute force attacks more difficult. </li>
+<li>The app auto-locks to prevent a security breach (customizable). </li>
+<li>Clears the clipboard after exiting the application (customizable). </li>
+<li>Limited number of login attempts to prevent a security breach (customizable). </li>
+<li>No internet access permission used. Only permissions used are to read and write to external storage (to support import and export of backups). </li>
+</ul>
 
 <h2> Install </h2>
-• Requires Android ICS 4.1.2 and above (API 16+) <br>
-• To install SafePass, download the .apk file, (make sure install from unknown sources is enabled) and click on the file to install. <br>
+<ul>
+<li>Requires Android ICS 4.1.2 and above (API 16+) </li>
+<li>To install SafePass, download the .apk file, (make sure install from unknown sources is enabled) and click on the file to install. </li>
+</ul>
