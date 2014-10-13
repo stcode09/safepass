@@ -82,7 +82,7 @@ public class FileManager {
 
         for(String entry : lines) {
             if(entry_type.equalsIgnoreCase(Utility.LOGIN)) {
-                String str = Crypto.decrypt(Crypto.obfuscateText(entry), (isImport) ? Utility.str2 : Utility.str1);
+                String str = Crypto.decrypt(entry, (isImport) ? Utility.str2 : Utility.str1);
                 String[] parts = str.split("<=>");
                 LoginEntry e = (LoginEntry) EntryFactory.getEntry(entry_type);
                 e.setLabel(parts[0]);
@@ -103,7 +103,7 @@ public class FileManager {
                 }
             }
             if(entry_type.equalsIgnoreCase(Utility.WALLET)) {
-                String str = Crypto.decrypt(Crypto.obfuscateText(entry), (isImport) ? Utility.str2 : Utility.str1);
+                String str = Crypto.decrypt(entry, (isImport) ? Utility.str2 : Utility.str1);
                 String[] parts = str.split("<=>");
                 WalletEntry e = (WalletEntry) EntryFactory.getEntry(entry_type);
                 e.setLabel(parts[0]);
@@ -125,7 +125,7 @@ public class FileManager {
                 }
             }
             if(entry_type.equalsIgnoreCase(Utility.NOTE)) {
-                String str = Crypto.decrypt(Crypto.obfuscateText(entry), (isImport) ? Utility.str2 : Utility.str1);
+                String str = Crypto.decrypt(entry, (isImport) ? Utility.str2 : Utility.str1);
                 String[] parts = str.split("<=>");
                 NoteEntry e = (NoteEntry) EntryFactory.getEntry(entry_type);
                 e.setTitle(parts[0]);
@@ -149,17 +149,17 @@ public class FileManager {
         List<String> lines = new ArrayList<String>();
         if(entry_type.equalsIgnoreCase(Utility.LOGIN)) {
             for(LoginEntry e : Utility.loginEntryList) {
-                lines.add(Crypto.obfuscateText(Crypto.encrypt(e.toString(), Utility.str1)) + Utility.nl);
+                lines.add(Crypto.encrypt(e.toString(), Utility.str1) + Utility.nl);
             }
         }
         if(entry_type.equalsIgnoreCase(Utility.WALLET)) {
             for(WalletEntry e : Utility.walletEntryList) {
-                lines.add(Crypto.obfuscateText(Crypto.encrypt(e.toString(), Utility.str1)) + Utility.nl);
+                lines.add(Crypto.encrypt(e.toString(), Utility.str1) + Utility.nl);
             }
         }
         if(entry_type.equalsIgnoreCase(Utility.NOTE)) {
             for(NoteEntry e : Utility.noteEntryList) {
-                lines.add(Crypto.obfuscateText(Crypto.encrypt(e.toString(), Utility.str1)) + Utility.nl);
+                lines.add(Crypto.encrypt(e.toString(), Utility.str1) + Utility.nl);
             }
         }
         writeToFile(context, file, lines);
@@ -171,13 +171,13 @@ public class FileManager {
             ObjectOutputStream out = new ObjectOutputStream(fileOutputStream);
             ExportEntry e = new ExportEntry();
             for(LoginEntry l : Utility.loginEntryList) {
-                e.setLoginItem(Crypto.obfuscateText(Crypto.encrypt(l.toString(), Utility.str1)));
+                e.setLoginItem(Crypto.encrypt(l.toString(), Utility.str1));
             }
             for(WalletEntry w : Utility.walletEntryList) {
-                e.setWalletItem(Crypto.obfuscateText(Crypto.encrypt(w.toString(), Utility.str1)));
+                e.setWalletItem(Crypto.encrypt(w.toString(), Utility.str1));
             }
             for(NoteEntry n : Utility.noteEntryList) {
-                e.setNoteItem(Crypto.obfuscateText(Crypto.encrypt(n.toString(), Utility.str1)));
+                e.setNoteItem(Crypto.encrypt(n.toString(), Utility.str1));
             }
             e.setT1(Crypto.computeHash(Utility.str1));
             out.writeObject(e);

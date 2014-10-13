@@ -1,7 +1,13 @@
 package utilities.safepassbeta;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,6 +45,8 @@ public class Utility {
     public static final String DATA1 = "data1";
     public static final String DATA2 = "data2";
     public static final String DATA3 = "data3";
+    public static final String CLIP_LABEL = "SafePass";
+    public static final String SPECIAL = "&lt;&eq;&gt;";
     public static final String[] CARDS = new String[]{
             "American Express", "Carte Blanche", "Diners Club", "Discover", "enRoute", "JCB",
             "MasterCard", "Visa"
@@ -50,6 +58,33 @@ public class Utility {
             return ((AutoCompleteTextView) o).getText().toString().length() > i;
         }
         return false;
+    }
+
+    public static void copyToClipboard(Context context, String clipLabel, String clipMsg, String toastMsg) {
+        ClipboardManager clipboardManager = (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
+        ClipData clipData = ClipData.newPlainText(clipLabel, clipMsg);
+        clipboardManager.setPrimaryClip(clipData);
+        Toast.makeText(context, toastMsg, Toast.LENGTH_SHORT).show();
+    }
+
+    public static void launchWebsite(Context context, String websiteURL) {
+        Uri url = Uri.parse(websiteURL);
+        Intent urlIntent = new Intent(Intent.ACTION_VIEW, url);
+        context.startActivity(urlIntent);
+    }
+
+    public static String strip(String s) {
+        if(s.contains("<=>")) {
+            return s.replaceAll("<=>", Utility.SPECIAL);
+        }
+        return s;
+    }
+
+    public static String unStrip(String s) {
+        if(s.contains(Utility.SPECIAL)) {
+            return s.replaceAll(Utility.SPECIAL, "<=>");
+        }
+        return s;
     }
 
 }

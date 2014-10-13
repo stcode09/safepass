@@ -69,7 +69,6 @@ public class AddWalletActivity extends Activity {
     public void onPause() {
         super.onPause();
         if(!onRestart) {
-            // Toast.makeText(getApplicationContext(), "on Pause", Toast.LENGTH_SHORT).show();
             Utility.currentTime = System.currentTimeMillis() / 1000;
         }
     }

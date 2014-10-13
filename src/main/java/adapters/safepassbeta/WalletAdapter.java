@@ -1,8 +1,6 @@
 package adapters.safepassbeta;
 
 import android.app.AlertDialog;
-import android.content.ClipData;
-import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -13,7 +11,6 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.List;
 
@@ -26,7 +23,6 @@ import utilities.safepassbeta.Utility;
 public class WalletAdapter extends ArrayAdapter<WalletEntry> {
 
     // Local variables
-    private Context context;
     private LayoutInflater inflater;
     private List<WalletEntry> walletList;
     private SparseBooleanArray mSelectedItemsIds;
@@ -34,7 +30,6 @@ public class WalletAdapter extends ArrayAdapter<WalletEntry> {
     public WalletAdapter(Context context, int resource, List<WalletEntry> walletList) {
         super(context, resource, walletList);
         mSelectedItemsIds = new SparseBooleanArray();
-        this.context = context;
         this.walletList = walletList;
         inflater = LayoutInflater.from(context);
     }
@@ -64,10 +59,8 @@ public class WalletAdapter extends ArrayAdapter<WalletEntry> {
         copyText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ClipboardManager clipboardManager = (ClipboardManager) getContext().getSystemService(Context.CLIPBOARD_SERVICE);
-                ClipData clipData = ClipData.newPlainText("SafePass:CreditCard", walletList.get(position).getNumber());
-                clipboardManager.setPrimaryClip(clipData);
-                Toast.makeText(context, "Credit Card Number copied to clipboard", Toast.LENGTH_SHORT).show();
+                Utility.copyToClipboard(getContext(), Utility.CLIP_LABEL,
+                        walletList.get(position).getNumber(), "Card Number Copied to Clipboard");
             }
         });
         copyText.setOnLongClickListener(new View.OnLongClickListener() {
@@ -75,32 +68,26 @@ public class WalletAdapter extends ArrayAdapter<WalletEntry> {
             public boolean onLongClick(View view) {
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-                builder.setTitle("Copy to clipboard:")
+                builder.setTitle("Copy to Clipboard:")
                         .setItems(R.array.WalletListItems, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
-                                ClipboardManager clipboardManager = (ClipboardManager) getContext().getSystemService(Context.CLIPBOARD_SERVICE);
                                 // The 'which' argument contains the index position
                                 // of the selected item
                                 if(which == 0) {
-                                    ClipData clipData = ClipData.newPlainText("SafePass:CardNumber", walletList.get(position).getNumber());
-                                    clipboardManager.setPrimaryClip(clipData);
-                                    Toast.makeText(context, "Card Number copied to clipboard", Toast.LENGTH_SHORT).show();
+                                    Utility.copyToClipboard(getContext(), Utility.CLIP_LABEL,
+                                            walletList.get(position).getNumber(), "Card Number Copied to Clipboard");
                                 } else if(which == 1) {
-                                    ClipData clipData = ClipData.newPlainText("SafePass:CardExpiration", walletList.get(position).getExpiration());
-                                    clipboardManager.setPrimaryClip(clipData);
-                                    Toast.makeText(context, "Card Expiration copied to clipboard", Toast.LENGTH_SHORT).show();
+                                    Utility.copyToClipboard(getContext(), Utility.CLIP_LABEL,
+                                            walletList.get(position).getExpiration(), "Expiration Copied to Clipboard");
                                 } else if(which == 2) {
-                                        ClipData clipData = ClipData.newPlainText("SafePass:CardSecurity", walletList.get(position).getSecurityCode());
-                                        clipboardManager.setPrimaryClip(clipData);
-                                        Toast.makeText(context, "Security Code copied to clipboard", Toast.LENGTH_SHORT).show();
+                                    Utility.copyToClipboard(getContext(), Utility.CLIP_LABEL,
+                                            walletList.get(position).getSecurityCode(), "Security Code Copied to Clipboard");
                                 } else if(which == 3) {
-                                        ClipData clipData = ClipData.newPlainText("SafePass:CardName", walletList.get(position).getNameOnCard());
-                                        clipboardManager.setPrimaryClip(clipData);
-                                        Toast.makeText(context, "Name on Card copied to clipboard", Toast.LENGTH_SHORT).show();
+                                    Utility.copyToClipboard(getContext(), Utility.CLIP_LABEL,
+                                            walletList.get(position).getNameOnCard(), "Name Copied to Clipboard");
                                 } else if(which == 4) {
-                                    ClipData clipData = ClipData.newPlainText("SafePass:CardType", walletList.get(position).getCardType());
-                                    clipboardManager.setPrimaryClip(clipData);
-                                    Toast.makeText(context, "Card Type copied to clipboard", Toast.LENGTH_SHORT).show();
+                                    Utility.copyToClipboard(getContext(), Utility.CLIP_LABEL,
+                                            walletList.get(position).getCardType(), "Card Type Copied to Clipboard");
                                 }
                             }
                         });
@@ -129,10 +116,6 @@ public class WalletAdapter extends ArrayAdapter<WalletEntry> {
         notifyDataSetChanged();
     }
 
-    public List<WalletEntry> getWalletEntry() {
-        return walletList;
-    }
-
     public void toggleSelection(int position) {
         selectView(position, !mSelectedItemsIds.get(position));
     }
@@ -150,10 +133,6 @@ public class WalletAdapter extends ArrayAdapter<WalletEntry> {
             mSelectedItemsIds.delete(position);
         }
         notifyDataSetChanged();
-    }
-
-    public int getSelectedCount() {
-        return mSelectedItemsIds.size();
     }
 
     public SparseBooleanArray getSelectedIds() {

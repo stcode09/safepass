@@ -1,8 +1,6 @@
 package adapters.safepassbeta;
 
 import android.app.AlertDialog;
-import android.content.ClipData;
-import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -26,7 +24,6 @@ import utilities.safepassbeta.Utility;
 public class LoginsAdapter extends ArrayAdapter<LoginEntry> {
 
     // Local variables
-    private Context context;
     private LayoutInflater inflater;
     private List<LoginEntry> loginsList;
     private SparseBooleanArray mSelectedItemsIds;
@@ -34,7 +31,6 @@ public class LoginsAdapter extends ArrayAdapter<LoginEntry> {
     public LoginsAdapter(Context context, int resource, List<LoginEntry> loginsList) {
         super(context, resource, loginsList);
         mSelectedItemsIds = new SparseBooleanArray();
-        this.context = context;
         this.loginsList = loginsList;
         inflater = LayoutInflater.from(context);
     }
@@ -64,10 +60,8 @@ public class LoginsAdapter extends ArrayAdapter<LoginEntry> {
         copyText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ClipboardManager clipboardManager = (ClipboardManager) getContext().getSystemService(Context.CLIPBOARD_SERVICE);
-                ClipData clipData = ClipData.newPlainText("SafePass:Password", loginsList.get(position).getPassword());
-                clipboardManager.setPrimaryClip(clipData);
-                Toast.makeText(context, "Password copied to clipboard", Toast.LENGTH_SHORT).show();
+                Utility.copyToClipboard(getContext(), Utility.CLIP_LABEL,
+                        loginsList.get(position).getPassword(), "Password Copied to Clipboard");
             }
         });
         copyText.setOnLongClickListener(new View.OnLongClickListener() {
@@ -75,40 +69,36 @@ public class LoginsAdapter extends ArrayAdapter<LoginEntry> {
             public boolean onLongClick(View view) {
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-                builder.setTitle("Copy to clipboard:")
+                builder.setTitle("Copy To Clipboard:")
                         .setItems(R.array.LoginsListItems, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
-                                ClipboardManager clipboardManager = (ClipboardManager) getContext().getSystemService(Context.CLIPBOARD_SERVICE);
                                 // The 'which' argument contains the index position
                                 // of the selected item
                                 if(which == 0) {
-                                    ClipData clipData = ClipData.newPlainText("SafePass:Password", loginsList.get(position).getPassword());
-                                    clipboardManager.setPrimaryClip(clipData);
-                                    Toast.makeText(context, "Password copied to clipboard", Toast.LENGTH_SHORT).show();
+                                    Utility.copyToClipboard(getContext(), Utility.CLIP_LABEL,
+                                            loginsList.get(position).getPassword(),
+                                            "Password Copied to Clipboard");
                                 } else if(which == 1) {
-                                    ClipData clipData = ClipData.newPlainText("SafePass:Username", loginsList.get(position).getUsername());
-                                    clipboardManager.setPrimaryClip(clipData);
-                                    Toast.makeText(context, "Username copied to clipboard", Toast.LENGTH_SHORT).show();
+                                    Utility.copyToClipboard(getContext(), Utility.CLIP_LABEL,
+                                            loginsList.get(position).getUsername(),
+                                            "Username Copied to Clipboard");
                                 } else if(which == 2) {
                                     if(loginsList.get(position).getWebsite().equals("nUlL")) {
-                                        Toast.makeText(getContext(), "No website to copy", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(getContext(), "No Website", Toast.LENGTH_SHORT).show();
                                     } else {
-                                        ClipData clipData = ClipData.newPlainText("SafePass:Comments", loginsList.get(position).getWebsite());
-                                        clipboardManager.setPrimaryClip(clipData);
-                                        Toast.makeText(context, "Website copied to clipboard", Toast.LENGTH_SHORT).show();
+                                        Utility.launchWebsite(getContext(), loginsList.get(position).getWebsite());
                                     }
                                 } else if(which == 3) {
                                     if(loginsList.get(position).getComments().equals("nUlL")) {
-                                        Toast.makeText(getContext(), "No comments to copy", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(getContext(), "No Comments to Copy", Toast.LENGTH_SHORT).show();
                                     } else {
-                                        ClipData clipData = ClipData.newPlainText("SafePass:Comments", loginsList.get(position).getComments());
-                                        clipboardManager.setPrimaryClip(clipData);
-                                        Toast.makeText(context, "Comments copied to clipboard", Toast.LENGTH_SHORT).show();
+                                        Utility.copyToClipboard(getContext(), Utility.CLIP_LABEL,
+                                                loginsList.get(position).getComments(),
+                                                "Comments Copied to Clipboard");
                                     }
                                 } else if(which == 4) {
-                                    ClipData clipData = ClipData.newPlainText("SafePass:Label", loginsList.get(position).getLabel());
-                                    clipboardManager.setPrimaryClip(clipData);
-                                    Toast.makeText(context, "Label copied to clipboard", Toast.LENGTH_SHORT).show();
+                                    Utility.copyToClipboard(getContext(), Utility.CLIP_LABEL,
+                                            loginsList.get(position).getLabel(), "Label Copied to Clipboard");
                                 }
                             }
                         });
@@ -138,10 +128,6 @@ public class LoginsAdapter extends ArrayAdapter<LoginEntry> {
         notifyDataSetChanged();
     }
 
-    public List<LoginEntry> getLoginEntry() {
-        return loginsList;
-    }
-
     public void toggleSelection(int position) {
         selectView(position, !mSelectedItemsIds.get(position));
     }
@@ -159,10 +145,6 @@ public class LoginsAdapter extends ArrayAdapter<LoginEntry> {
             mSelectedItemsIds.delete(position);
         }
         notifyDataSetChanged();
-    }
-
-    public int getSelectedCount() {
-        return mSelectedItemsIds.size();
     }
 
     public SparseBooleanArray getSelectedIds() {

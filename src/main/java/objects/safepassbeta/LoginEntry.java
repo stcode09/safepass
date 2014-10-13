@@ -1,7 +1,5 @@
 package objects.safepassbeta;
 
-import android.util.Log;
-
 import utilities.safepassbeta.Utility;
 
 public class LoginEntry implements Entry{
@@ -17,7 +15,7 @@ public class LoginEntry implements Entry{
     }
 
     public void setLabel(String label) {
-        this.label = label;
+        this.label = Utility.unStrip(label);
     }
 
     public String getUsername() {
@@ -25,7 +23,7 @@ public class LoginEntry implements Entry{
     }
 
     public void setUsername(String username) {
-        this.username = username;
+        this.username = Utility.unStrip(username);
     }
 
     public String getPassword() {
@@ -33,7 +31,7 @@ public class LoginEntry implements Entry{
     }
 
     public void setPassword(String password) {
-        this.password = password;
+        this.password = Utility.unStrip(password);
     }
 
     public String getWebsite() {
@@ -41,7 +39,7 @@ public class LoginEntry implements Entry{
     }
 
     public void setWebsite(String website) {
-        this.website = website;
+        this.website = Utility.unStrip(website);
     }
 
     public String getComments() {
@@ -49,16 +47,19 @@ public class LoginEntry implements Entry{
     }
 
     public void setComments(String comments) {
-        this.comments = comments;
+        this.comments = Utility.unStrip(comments);
     }
 
     @Override
     public String toString() {
-        return getLabel() + "<=>" + getUsername() + "<=>" + getPassword() + "<=>" + getWebsite() + "<=>" + getComments();
+        return Utility.strip(getLabel()) + "<=>" + Utility.strip(getUsername()) + "<=>" +
+                Utility.strip(getPassword()) + "<=>" + Utility.strip(getWebsite()) + "<=>" +
+                Utility.strip(getComments());
     }
 
     @Override
     public boolean equals(Object o) {
         return o.getClass().getSimpleName().equals(this.getClass().getSimpleName()) && this.toString().equals(o.toString());
     }
+
 }

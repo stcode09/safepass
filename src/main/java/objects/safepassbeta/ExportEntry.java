@@ -24,10 +24,6 @@ public class ExportEntry implements Serializable {
         n1.add(str);
     }
 
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
-    }
-
     public String getT1() {
         return t1;
     }

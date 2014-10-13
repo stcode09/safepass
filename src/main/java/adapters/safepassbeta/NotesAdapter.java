@@ -1,8 +1,6 @@
 package adapters.safepassbeta;
 
 import android.app.AlertDialog;
-import android.content.ClipData;
-import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -13,7 +11,6 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.List;
 
@@ -26,7 +23,6 @@ import utilities.safepassbeta.Utility;
 public class NotesAdapter extends ArrayAdapter<NoteEntry> {
 
     // Local variables
-    private Context context;
     private LayoutInflater inflater;
     private List<NoteEntry> notesList;
     private SparseBooleanArray mSelectedItemsIds;
@@ -34,7 +30,6 @@ public class NotesAdapter extends ArrayAdapter<NoteEntry> {
     public NotesAdapter(Context context, int resource, List<NoteEntry> notesList) {
         super(context, resource, notesList);
         mSelectedItemsIds = new SparseBooleanArray();
-        this.context = context;
         this.notesList = notesList;
         inflater = LayoutInflater.from(context);
     }
@@ -66,10 +61,8 @@ public class NotesAdapter extends ArrayAdapter<NoteEntry> {
         copyText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ClipboardManager clipboardManager = (ClipboardManager) getContext().getSystemService(Context.CLIPBOARD_SERVICE);
-                ClipData clipData = ClipData.newPlainText("SafePass:Note", notesList.get(position).getNote());
-                clipboardManager.setPrimaryClip(clipData);
-                Toast.makeText(context, "Note copied to clipboard", Toast.LENGTH_SHORT).show();
+                Utility.copyToClipboard(getContext(), Utility.CLIP_LABEL,
+                        notesList.get(position).getNote(), "Note Copied to Clipboard");
             }
         });
         copyText.setOnLongClickListener(new View.OnLongClickListener() {
@@ -77,20 +70,17 @@ public class NotesAdapter extends ArrayAdapter<NoteEntry> {
             public boolean onLongClick(View view) {
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-                builder.setTitle("Copy to clipboard:")
+                builder.setTitle("Copy to Clipboard:")
                         .setItems(R.array.NotesListItems, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
-                                ClipboardManager clipboardManager = (ClipboardManager) getContext().getSystemService(Context.CLIPBOARD_SERVICE);
                                 // The 'which' argument contains the index position
                                 // of the selected item
                                 if(which == 0) {
-                                    ClipData clipData = ClipData.newPlainText("SafePass:Note", notesList.get(position).getNote());
-                                    clipboardManager.setPrimaryClip(clipData);
-                                    Toast.makeText(context, "Note copied to clipboard", Toast.LENGTH_SHORT).show();
+                                    Utility.copyToClipboard(getContext(), Utility.CLIP_LABEL,
+                                            notesList.get(position).getNote(), "Note Copied to Clipboard");
                                 } else if(which == 1) {
-                                    ClipData clipData = ClipData.newPlainText("SafePass:Title", notesList.get(position).getTitle());
-                                    clipboardManager.setPrimaryClip(clipData);
-                                    Toast.makeText(context, "Title copied to clipboard", Toast.LENGTH_SHORT).show();
+                                    Utility.copyToClipboard(getContext(), Utility.CLIP_LABEL,
+                                            notesList.get(position).getTitle(), "Title Copied to Clipboard");
                                 }
                             }
                         });
@@ -120,10 +110,6 @@ public class NotesAdapter extends ArrayAdapter<NoteEntry> {
         notifyDataSetChanged();
     }
 
-    public List<NoteEntry> getLoginEntry() {
-        return notesList;
-    }
-
     public void toggleSelection(int position) {
         selectView(position, !mSelectedItemsIds.get(position));
     }
@@ -141,10 +127,6 @@ public class NotesAdapter extends ArrayAdapter<NoteEntry> {
             mSelectedItemsIds.delete(position);
         }
         notifyDataSetChanged();
-    }
-
-    public int getSelectedCount() {
-        return mSelectedItemsIds.size();
     }
 
     public SparseBooleanArray getSelectedIds() {

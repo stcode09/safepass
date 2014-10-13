@@ -1,9 +1,6 @@
 package activities.safepassbeta;
 
 import android.app.Activity;
-import android.content.ClipData;
-import android.content.ClipboardManager;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Paint;
@@ -64,10 +61,7 @@ public class SetupAndLoginActivity extends Activity {
         super.onDestroy();
         SharedPreferences sharedPreferences = getSharedPreferences(Utility.PREFS_FILE, MODE_PRIVATE);
         if(sharedPreferences.getBoolean("clear_clipboard", false)) {
-            ClipboardManager clipboardManager = (ClipboardManager) getApplicationContext().getSystemService(Context.CLIPBOARD_SERVICE);
-            ClipData clipData = ClipData.newPlainText("", "");
-            clipboardManager.setPrimaryClip(clipData);
-            Toast.makeText(getApplicationContext(), "Clipboard cleared", Toast.LENGTH_SHORT).show();
+            Utility.copyToClipboard(getApplicationContext(), "", "", "Clipboard Cleared");
         }
     }
 

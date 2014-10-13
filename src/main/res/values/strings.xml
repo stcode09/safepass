@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">SafePassBeta</string>
+    <string name="app_name">SafePass</string>
     <string name="action_settings">Settings</string>
     <string name="welcome_msg">Welcome to SafePass!</string>
     <string name="login_msg">Please enter your password to unlock:</string>
@@ -35,7 +35,7 @@
     <array name="LoginsListItems">
         <item>Copy Password</item>
         <item>Copy Username</item>
-        <item>Copy Website</item>
+        <item>Go To Website</item>
         <item>Copy Comments</item>
         <item>Copy Label</item>
     </array>

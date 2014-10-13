@@ -2,14 +2,9 @@ package activities.safepassbeta;
 
 import android.app.ActionBar;
 import android.app.AlertDialog;
-import android.content.ClipData;
-import android.content.ClipboardManager;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.PackageManager;
-import android.content.pm.ResolveInfo;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
@@ -26,19 +21,15 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.TableLayout;
 import android.widget.Toast;
 
 import java.io.File;
-import java.net.URI;
 import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
-import java.util.List;
 import java.util.Locale;
 import java.util.concurrent.Callable;
 
@@ -49,10 +40,6 @@ import javax.crypto.NoSuchPaddingException;
 import fragments.safepassbeta.DisplayLoginsFragment;
 import fragments.safepassbeta.DisplayNotesFragment;
 import fragments.safepassbeta.DisplayWalletFragment;
-import objects.safepassbeta.ExportEntry;
-import objects.safepassbeta.LoginEntry;
-import objects.safepassbeta.NoteEntry;
-import objects.safepassbeta.WalletEntry;
 import utilities.safepassbeta.Crypto;
 import utilities.safepassbeta.FileManager;
 import utilities.safepassbeta.LoadingDialog;
@@ -84,9 +71,8 @@ public class DashboardActivity extends FragmentActivity {
         super.onRestart();
         if(!Utility.fromAdd) {
             SharedPreferences sharedPreferences = getSharedPreferences(Utility.PREFS_FILE, MODE_PRIVATE);
-            long timeout = Integer.parseInt(sharedPreferences.getString("autolock_list", "0"));
+            long timeout = Integer.parseInt(sharedPreferences.getString("autolock_list", "60"));
             boolean lock = (System.currentTimeMillis()/1000 - Utility.currentTime) > timeout;
-            // Toast.makeText(getApplicationContext(), "Lock: " + lock + " fromAdd: " + !Utility.fromAdd, Toast.LENGTH_SHORT).show();
             if(lock) {
                 Intent returnIntent = new Intent();
                 setResult(RESULT_CANCELED, returnIntent);
@@ -154,10 +140,7 @@ public class DashboardActivity extends FragmentActivity {
                 startActivity(intent);
                 return true;
             case R.id.action_clear:
-                ClipboardManager clipboardManager = (ClipboardManager) getApplicationContext().getSystemService(Context.CLIPBOARD_SERVICE);
-                ClipData clipData = ClipData.newPlainText("", "");
-                clipboardManager.setPrimaryClip(clipData);
-                Toast.makeText(getApplicationContext(), "Clipboard cleared", Toast.LENGTH_SHORT).show();
+                Utility.copyToClipboard(getApplicationContext(), "", "", "Clipboard Cleared");
                 return true;
             case R.id.action_reset_password:
                 showResetPasswordDialog();
@@ -169,7 +152,7 @@ public class DashboardActivity extends FragmentActivity {
                 showImportDialog();
                 return true;
             case R.id.action_help:
-                Uri url = Uri.parse("http://stcode09.github.io/safepass/index.html#-faq-");
+                Uri url = Uri.parse("http://stcode09.github.io/safepass/#-faq-");
                 Intent urlIntent = new Intent(Intent.ACTION_VIEW, url);
                 startActivity(urlIntent);
             default:
@@ -255,7 +238,6 @@ public class DashboardActivity extends FragmentActivity {
                             return handleReset();
                         }
                     }, "Please wait...", "Reseting password...");
-
                     Toast.makeText(getApplicationContext(), "Password reset successful", Toast.LENGTH_SHORT).show();
                 } else if(str1.equals(str2) && !str2.equals("")) {
                     Toast.makeText(getApplicationContext(), "Please enter a different password", Toast.LENGTH_SHORT).show();

@@ -6,7 +6,7 @@ import java.util.HashSet;
 
 public class PasswordList {
 
-    public static HashSet<String> passwordList = new HashSet<String>() {{
+    public final static HashSet<String> passwordList = new HashSet<String>() {{
         add("123456");
         add("password");
         add("12345678");
