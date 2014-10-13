@@ -3,6 +3,14 @@
 
 SafePass is a password manager for Android devices that lets users securely store their login information, credit card details and notes. The application utilizes password based encryption (AES-256) to store user data. The user initially sets up a master password which grants entry into the application. The master password is never stored, and all the encryption is done locally on the device.
 
+<h2> Install </h2>
+<ul>
+<li>Requires Android ICS 4.1.2 and above (API 16+) </li>
+<li> Dowload the .apk file </li>
+<li> Go to Settings > Security > Unkown sources (make sure it is enabled) </li>
+<li> Click on the downloaded .apk file to install </li>
+</ul>
+
 <h2>Main Features</h2>
 <ul>
 <li>Securely store login information (passwords), credit card information and notes. </li>
@@ -27,10 +35,4 @@ SafePass is a password manager for Android devices that lets users securely stor
 <li>Clears the clipboard after exiting the application (customizable). </li>
 <li>Limited number of login attempts to prevent a security breach (customizable). </li>
 <li>No internet access permission used. Only permissions used are to read and write to external storage (to support import and export of backups). </li>
-</ul>
-
-<h2> Install </h2>
-<ul>
-<li>Requires Android ICS 4.1.2 and above (API 16+) </li>
-<li>To install SafePass, download the .apk file, (make sure install from unknown sources is enabled) and click on the file to install. </li>
 </ul>
