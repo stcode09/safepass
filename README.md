@@ -39,4 +39,4 @@ SafePass is a password manager for Android devices that lets users securely stor
 
 <h2> Screenshots </h2>
 
-<img src="https://raw.githubusercontent.com/stcode09/safepass/master/screens/Screenshot_2014-10-12-22-16-31.png" />
+<img src="https://raw.githubusercontent.com/stcode09/safepass/master/screens/Screenshot_2014-10-12-22-16-31.png" width="50%" height="50%"/>
