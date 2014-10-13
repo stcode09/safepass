@@ -14,12 +14,17 @@ SafePass is a password manager for Android devices that lets users securely stor
 8) Clear clipboard option. <br>
 9) Contains no advertisments. <br>
 10) Quick copy of passwords, credit card details, and notes. <br> 
+11) Reset master password. <br>
  
-<h2>Security Features</h2
+<h2>Security Features</h2>
 • The application encrypts all user data with AES-256 bit encryption. <br>
-• The key to encrypt the data is derived from the master password using a Password Based Key Derivation Function (PBKDF2 with Hmac SHA1). The key is salted with a randomly generated 256-bit salt using Java's SecureRandom class. The encryption is performed with a 1024 iterations to encrypt the data. This makes brute force attacks more difficult. <br>
+• The key to encrypt the data is derived from the Master Password using a Password Based Key Derivation Function (PBKDF2 with Hmac SHA1). The key is salted with a randomly generated 256-bit salt using Java's SecureRandom class. The encryption is performed with 1024 iterations to encrypt the data. This makes brute force attacks more difficult. <br>
+• The master password is never stored. Instead, it transformed into a 512-bit hash, and then salted (using PBKDF2 with Hmac SHA1). The result is then hashed 1024 times. The salt helps to protect from offline dictionary attacks and the 1024 iterations makes brute force attacks more difficult. <br>
+• The app auto-locks to prevent a security breach (customizable). <br>
+• Clears the cliipboard after exiting the application (customizable). <br>
+• Limited number of login attempts to prevent a security breach (customizable). <br>
+• No internet access permission used. Only permissions used are to read and write to external storage to suppor import and export of backups. <br>
 
- 
 <h2> FAQ </h2>
 <b>1) How do I navigate within the application?</b> <br>
 A: Simply swipe left/right to navigate within the application <br>
