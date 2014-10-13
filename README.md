@@ -27,4 +27,4 @@ SafePass is a password manager for Android devices that lets users securely stor
 
 <h2> Install </h2>
 • Requires Android ICS 4.1.2 and above (API 16+) <br>
-• To install SafePass, download the .apk file, (make sure install from unknown sources is enabled) and click on install. <br>
+• To install SafePass, download the .apk file, (make sure install from unknown sources is enabled) and click on the file to install. <br>
