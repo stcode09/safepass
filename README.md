@@ -23,7 +23,7 @@ SafePass is a password manager for Android devices that lets users securely stor
 • The app auto-locks to prevent a security breach (customizable). <br>
 • Clears the cliipboard after exiting the application (customizable). <br>
 • Limited number of login attempts to prevent a security breach (customizable). <br>
-• No internet access permission used. Only permissions used are to read and write to external storage (to suppor import and export of backups). <br>
+• No internet access permission used. Only permissions used are to read and write to external storage (to support import and export of backups). <br>
 
 <h2> FAQ </h2>
 <b>1) How do I navigate within the application?</b> <br>
