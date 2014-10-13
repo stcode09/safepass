@@ -11,7 +11,7 @@ SafePass is a password manager for Android devices that lets users securely stor
 <li>Share backup file with a variety of applications like Dropbox, Google Drive, etc. </li>
 <li>Import saved encrypted backups. </li>
 <li>Customizable auto-lock feature that locks the app after a certain amount of time. </li>
-<li>et the number of login attempts allowed. </li>
+<li>Set the number of login attempts allowed. </li>
 <li>Clear clipboard option. </li>
 <li>Contains no advertisements. </li>
 <li>Quick copy of passwords, credit card details, and notes. </li>
