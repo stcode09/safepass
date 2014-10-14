@@ -30,7 +30,7 @@ SafePass is a password manager for Android devices that lets users securely stor
 <ul>
 <li>The application encrypts all user data with AES-256 bit encryption. </li>
 <li>The key to encrypt the data is derived from the Master Password using a Password Based Key Derivation Function (PBKDF2 with Hmac SHA1). The key is salted with a randomly generated 256-bit salt using Java's SecureRandom class. The encryption is performed with 1024 iterations to encrypt the data. This makes brute force attacks more difficult. </li>
-<li>The Master Password is never stored. Instead, it is transformed into a 512-bit salted hash (using PBKDF2 with Hmac SHA1). The result is then hashed 1024 times. The salt helps to protect from offline dictionary attacks and the iterations make brute force attacks more difficult. </li>
+<li>The Master Password is never stored. Instead, it is transformed into a one-way 512-bit salted hash (using PBKDF2 with Hmac SHA1). The result is then hashed 1024 times. The salt helps to protect from offline dictionary attacks and the repititive hashing makes brute force attacks more difficult. </li>
 <li>The app auto-locks to prevent a security breach (customizable). </li>
 <li>Clears the clipboard after exiting the application (customizable). </li>
 <li>Limits the number of login attempts to prevent a security breach (customizable). </li>
@@ -71,6 +71,10 @@ SafePass is a password manager for Android devices that lets users securely stor
 <li><a href="#q15">Where is my backup file located?</a></li>
 <li><a href="#q16">Why do I get the message "No backup folder found. Cannot export" when trying to export?</a></li>
 <li><a href="#q17">Why do I get the message "No backup file found" when trying to import?</a></li>
+<li><a href="#q18">Why don't I see any data when importing from a backup?</a></li>
+<li><a href="#q19">Where is my Master Password stored?</a></li>
+<li><a href="#q20">I forgot my Master Password. How can I recover it?</a></li>
+<li><a href="#q21">What encryption scheme is used, and how secure is my data?</a></li>
 </ol>
 
 <ol>
@@ -123,6 +127,18 @@ To view the location of your backup file, go to the Settings menu and navigate t
 This message appears when the application cannot find your primary storage destination. It may be caused because your primary storage destination is either full, or temporarily un-mounted. 
 </li>
 <li name="q17"><b>Why do I get the message "No backup file found" when trying to import?</b><br>
-This message appears when the application cannot find your a backup file in the primayt storage destination. To import from a backup, place the backup file named "backup.crypt" under the "SafePass" folder in your primary storage destination. If no such folder exists, then please create one manually. (A file browser will be added in the next release). 
+This message appears when the application cannot find your a backup file in the primay storage destination. To import from a backup, place the backup file named "backup.crypt" under the "SafePass" folder in your primary storage destination. If no such folder exists, then please create one manually. (A file browser will be added in the next release). 
+</li>
+<li name="q18"><b>Why don't I see any data when importing from a backup?</b><br>
+This could occur becuase the password you entered while importing may be incorrect. Please ensure that the password entered when importing from a backup is the one associated with that backup file. 
+</li>
+<li name="q19"><b>Where is my Master Password stored?</b><br>
+Your master password is never stored. Only you know your master password. 
+</li>
+<li name="q20"><b>I forgot my Master Password. How can I recover it?</b><br>
+Sorry, your Master Password cannot be recovered at this time. This is to ensure data security, so be sure to remeber your Master Password. (Future versions will include a recovery option). 
+</li>
+<li name="q21"><b>What encryption scheme is used, and how secure is my data?</b><br>
+Your data is ecnrypted using <a href="http://en.wikipedia.org/wiki/Advanced_Encryption_Standard">AES-256 bit encryption</a> (Advanced Encryption Standard). This encryption standard is adopted by the U.S. government and is used worldwide. The key to encrypt the data is derived from the Master Password using a Password Based Key Derivation Function (PBKDF2 with Hmac SHA1). The key is salted with a randomly generated 256-bit salt using Java's SecureRandom class. The encryption is performed with 1024 iterations to encrypt the data. This makes brute force attacks more difficult.
 </li>
 </ol>
