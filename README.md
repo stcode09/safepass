@@ -60,6 +60,7 @@ SafePass is a password manager for Android devices that lets users securely stor
 <li><a href="#q4">How do I copy data from a login, wallet or note entry?</a></li>
 <li><a href="#q5">How do I edit data of a login, wallet or note entry?</a></li>
 <li><a href="#q6">How do I generate a new password?</a></li>
+<li><a href="#q7">How do I change the password generator settings?</a></li>
 </ol>
 
 <ol>
@@ -80,5 +81,8 @@ To edit an entry, tap on the edit icon located on the right hand corner of the d
 </li>
 <li name="q6"><b>How do I generate a new password?</b><br>
 To generate a new password, tap on the generate icon located to the right of the password field. To access the quick settings for the password generator, long-click on the generate icon and select the desired settings. These settings inherit from the main password generator options located in the settings menu.
+</li>
+<li name="q7"><b>How do I change the password generator settings?</b><br>
+There are two ways to change the password generator settings. One option is to go to the settings menu and selecting the desired options under "Password Generator" (these settings are applied to all passwords). Another way is to long-click on the generate password icon located to the right of the password field (these settings apply only to the current password, and inherit from the main settings). 
 </li>
 </ol>
