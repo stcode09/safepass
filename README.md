@@ -63,6 +63,7 @@ SafePass is a password manager for Android devices that lets users securely stor
 <li><a href="#q7">How do I change the password generator settings?</a></li>
 <li><a href="#q8">How do I clear the clipboard?</a></li>
 <li><a href="#q9">How do I customize the number of login attempts?</a></li>
+<li><a href="#q10">How do I customize the auto-lock timeout?</a></li>
 </ol>
 
 <ol>
@@ -91,6 +92,9 @@ There are two ways to change the password generator settings. One option is to g
 To clear the clipboard, tap on the expand icon on the task-bar. A drop-down menu will appear. Then, tap on "Clear Clipboard". The application can also clear the clipboard automatically when it exits. To enable this, go to the Settings menu and make sure "Clear Clipboard" is enabled.
 </li>
 <li name="q9"><b>How do I customize the number of login attempts?</b><br>
-To customize the number of login attempts, go to the Settings menu and tap on "Login Attempts". Select the desired number of attemps from the pop-up dialog.
+To customize the number of login attempts, go to the Settings menu and tap on "Login Attempts".
+</li>
+<li name="q10"><b>How do I customize the auto-lock timeout?</b><br>
+To customize the number auto-lock timeout, go to the Settings menu and tap on "Auto-lock Timeout".
 </li>
 </ol>
