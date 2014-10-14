@@ -61,6 +61,7 @@ SafePass is a password manager for Android devices that lets users securely stor
 <li><a href="#q5">How do I edit data of a login, wallet or note entry?</a></li>
 <li><a href="#q6">How do I generate a new password?</a></li>
 <li><a href="#q7">How do I change the password generator settings?</a></li>
+<li><a href="#q8">How do I clear the clipboard?</a></li>
 </ol>
 
 <ol>
@@ -83,6 +84,9 @@ To edit an entry, tap on the edit icon located on the right hand corner of the d
 To generate a new password, tap on the generate icon located to the right of the password field. To access the quick settings for the password generator, long-click on the generate icon and select the desired settings. These settings inherit from the main password generator options located in the settings menu.
 </li>
 <li name="q7"><b>How do I change the password generator settings?</b><br>
-There are two ways to change the password generator settings. One option is to go to the settings menu and selecting the desired options under "Password Generator" (these settings are applied to all passwords). Another way is to long-click on the generate password icon located to the right of the password field (these settings apply only to the current password, and inherit from the main settings). 
+There are two ways to change the password generator settings. One option is to go to the Settings menu and selecting the desired options under "Password Generator" (these settings are applied to all passwords). Another way is to long-click on the generate password icon located to the right of the password field (these settings apply only to the current password, and inherit from the main settings). 
+</li>
+<li name="q8"><b>How do I clear the clipboard</b><br>
+To clear the clipboard, tap on the expand icon on the task-bar. A drop-down menu will appear. Then, tap on "Clear Clipboard". The application can also clear the clipboard automatically when it exits. To enable this, go to the Settings menu and make sure "Clear Clipboard" is enabled.
 </li>
 </ol>
