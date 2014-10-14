@@ -65,6 +65,12 @@ SafePass is a password manager for Android devices that lets users securely stor
 <li><a href="#q9">How do I customize the number of login attempts?</a></li>
 <li><a href="#q10">How do I customize the auto-lock timeout?</a></li>
 <li><a href="#q11">How do I change/reset the Master Password?</a></li>
+<li><a href="#q12">How do I backup my data?</a></li>
+<li><a href="#q13">How do I import from a backup file?</a></li>
+<li><a href="#q14">How do I share my backup file?</a></li>
+<li><a href="#q15">Where is my backup file located?</a></li>
+<li><a href="#q16">Why do I get the message "No backup folder found. Cannot export" when trying to export?</a></li>
+<li><a href="#q17">Why do I get the message "No backup file found" when trying to import?</a></li>
 </ol>
 
 <ol>
@@ -100,5 +106,23 @@ To customize the number auto-lock timeout, go to the Settings menu and tap on "A
 </li>
 <li name="q11"><b>How do I change/reset the Master Password?</b><br>
 To change/reset the Master Password, tap on the expand icon on the task-bar. A drop-down menu will appear. Then, tap on "Reset Password".
+</li>
+<li name="q12"><b>How do I backup my data?</b><br>
+To backup your data, tap on the expand icon on the task-bar. A drop-down menu will appear. Then, tap on "Export Backup". This will write an encrypted backup file to your primiary storage destination (either internal storage, or SD Card).
+</li>
+<li name="q13"><b>How do I import from a backup file?</b><br>
+To import your data, tap on the expand icon on the task-bar. A drop-down menu will appear. Then, tap on "Import Backup". Next, enter the password associated witht the backup file and tap "Import".
+</li>
+<li name="q14"><b>How do I share my backup file?</b><br>
+To share your backup file, click on "Export Backup". After a successful export, a "Share File" dialog box will appear. Select the desired application from the dialog box.
+</li>
+<li name="q15"><b>Where is my backup file located?</b><br>
+To view the location of your backup file, go to the Settings menu and navigate to the "About" section. You will see your backup file location under "Bakcup Location".
+</li>
+<li name="q16"><b>Why do I get the message "No backup folder found. Cannot export." when trying to export?</b><br>
+This message appears when the application cannot find your primary storage destination. It may be caused because your primary storage destination is either full, or temporarily un-mounted. 
+</li>
+<li name="q17"><b>Why do I get the message "No backup file found" when trying to import?</b><br>
+This message appears when the application cannot find your a backup file in the primayt storage destination. To import from a backup, place the backup file named "backup.crypt" under the "SafePass" folder in your primary storage destination. If no such folder exists, then please create one manually. (A file browser will be added in the next release). 
 </li>
 </ol>
