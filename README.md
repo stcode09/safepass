@@ -55,10 +55,14 @@ SafePass is a password manager for Android devices that lets users securely stor
 <h2>Frequently Asked Questions (FAQ)</h2>
 <ol>
 <li><a href="#q1">How do I navigate within the application?</a></li>
+<li><a href="#q2">How do I add either a login, wallet or note entry?</a></li>
 </ol>
 
 <ol>
 <li name="q1"><b>How do I navigate within the application?</b><br>
 To navigate within the application, simply swipe left or right.
+</li>
+<li name="q1"><b>How do I add either a login, wallet or note entry?</b><br>
+To add an entry, navigate to the particular tab and click on the <img src="https://raw.githubusercontent.com/stcode09/safepass/master/src/main/res/drawable-hdpi/ic_action_content_new.png" height="50%" width="50%" /> icon. 
 </li>
 </ol>
