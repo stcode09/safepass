@@ -52,11 +52,11 @@ SafePass is a password manager for Android devices that lets users securely stor
 <img src="https://raw.githubusercontent.com/stcode09/safepass/master/screens/Screenshot_2014-10-12-22-42-59.png" width="25%" height="25%"/>
 <img src="https://raw.githubusercontent.com/stcode09/safepass/master/screens/Screenshot_2014-10-12-22-42-06.png" width="25%" height="25%"/>
 
-<h2>Frequently Asked Questions (FAQ)<h2>
+<h2>Frequently Asked Questions (FAQ)</h2>
 <ol>
-<li><a href=”#q1”>How do I navigate within the application?</a></li>
+<li><a href="#q1">How do I navigate within the application?</a></li>
 </ol>
 
 <ol>
-<li name=”q1”>How do I navigate within the application?</li>
+<li name="q1">How do I navigate within the application?</li>
 </ol>
