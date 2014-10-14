@@ -59,6 +59,7 @@ SafePass is a password manager for Android devices that lets users securely stor
 <li><a href="#q3">How do I delete a login, wallet or note entry?</a></li>
 <li><a href="#q4">How do I copy data from a login, wallet or note entry?</a></li>
 <li><a href="#q5">How do I edit data of a login, wallet or note entry?</a></li>
+<li><a href="#q6">How do I generate a new password?</a></li>
 </ol>
 
 <ol>
@@ -75,6 +76,9 @@ To delete an entry, navigate to the particular tab and long click on the desired
 To quickly copy data from an entry, tap on the clipboard icon of the desired entry. To access the advanced copy menu, long-click on the clipboard icon of the desired entry. 
 </li>
 <li name="q5"><b>How do I edit data of a login, wallet or note entry?</b><br>
-To edit an entry, tap on the edit icon located on the right hand corner of the particualr entry.
+To edit an entry, tap on the edit icon located on the right hand corner of the desired entry.
+</li>
+<li name="q6"><b>How do I generate a new password?</b><br>
+To generate a new password, tap on the generate icon located to the right of the password field. To access the quick settings for the password generator, long-click on the generate icon and select the desired settings. These settings inherit from the main password generator options located in the settings menu.
 </li>
 </ol>
