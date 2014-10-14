@@ -58,5 +58,7 @@ SafePass is a password manager for Android devices that lets users securely stor
 </ol>
 
 <ol>
-<li name="q1">How do I navigate within the application?</li>
+<li name="q1"><b>How do I navigate within the application?</b><br>
+A: To navigate within the application, simply swipe left or right.
+</li>
 </ol>
