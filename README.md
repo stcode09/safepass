@@ -64,6 +64,7 @@ SafePass is a password manager for Android devices that lets users securely stor
 <li><a href="#q8">How do I clear the clipboard?</a></li>
 <li><a href="#q9">How do I customize the number of login attempts?</a></li>
 <li><a href="#q10">How do I customize the auto-lock timeout?</a></li>
+<li><a href="#q11">How do I change/reset the Master Password?</a></li>
 </ol>
 
 <ol>
@@ -96,5 +97,8 @@ To customize the number of login attempts, go to the Settings menu and tap on "L
 </li>
 <li name="q10"><b>How do I customize the auto-lock timeout?</b><br>
 To customize the number auto-lock timeout, go to the Settings menu and tap on "Auto-lock Timeout".
+</li>
+<li name="q11"><b>How do I change/reset the Master Password?</b><br>
+To change/reset the Master Password, tap on the expand icon on the task-bar. A drop-down menu will appear. Then, tap on "Reset Password".
 </li>
 </ol>
