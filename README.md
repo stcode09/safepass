@@ -55,18 +55,26 @@ SafePass is a password manager for Android devices that lets users securely stor
 <h2>Frequently Asked Questions (FAQ)</h2>
 <ol>
 <li><a href="#q1">How do I navigate within the application?</a></li>
-<li><a href="#q2">How do I add either a login, wallet or note entry?</a></li>
-<li><a href="#q3">How do I delete either a login, wallet or note entry?</a></li>
+<li><a href="#q2">How do I add a login, wallet or note entry?</a></li>
+<li><a href="#q3">How do I delete a login, wallet or note entry?</a></li>
+<li><a href="#q4">How do I copy data from a login, wallet or note entry?</a></li>
+<li><a href="#q5">How do I edit data of a login, wallet or note entry?</a></li>
 </ol>
 
 <ol>
 <li name="q1"><b>How do I navigate within the application?</b><br>
 To navigate within the application, simply swipe left or right.
 </li>
-<li name="q2"><b>How do I add either a login, wallet or note entry?</b><br>
+<li name="q2"><b>How do I add a login, wallet or note entry?</b><br>
 To add an entry, navigate to the particular tab and tap on the add icon (located on the upper right hand corner).
 </li>
-<li name="q3"><b>How do I delete either a login, wallet or note entry?</b><br>
+<li name="q3"><b>How do I delete a login, wallet or note entry?</b><br>
 To delete an entry, navigate to the particular tab and long click on the desired entry. A delete icon will appear on the upper right hand corner of the screen. You can select multiple entries and then tap the delete icon.
+</li>
+<li name="q4"><b>How do I copy data from a login, wallet or note entry?</b><br>
+To quickly copy data from an entry, tap on the clipboard icon of the desired entry. To access the advanced copy menu, long-click on the clipboard icon of the desired entry. 
+</li>
+<li name="q5"><b>How do I edit data of a login, wallet or note entry?</b><br>
+To edit an entry, tap on the edit icon located on the right hand corner of the particualr entry.
 </li>
 </ol>
