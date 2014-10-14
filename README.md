@@ -56,13 +56,17 @@ SafePass is a password manager for Android devices that lets users securely stor
 <ol>
 <li><a href="#q1">How do I navigate within the application?</a></li>
 <li><a href="#q2">How do I add either a login, wallet or note entry?</a></li>
+<li><a href="#q3">How do I delete either a login, wallet or note entry?</a></li>
 </ol>
 
 <ol>
 <li name="q1"><b>How do I navigate within the application?</b><br>
 To navigate within the application, simply swipe left or right.
 </li>
-<li name="q1"><b>How do I add either a login, wallet or note entry?</b><br>
-To add an entry, navigate to the particular tab and tap on the plus icon (located on the upper right hand corner).
+<li name="q2"><b>How do I add either a login, wallet or note entry?</b><br>
+To add an entry, navigate to the particular tab and tap on the add icon (located on the upper right hand corner).
+</li>
+<li name="q3"><b>How do I delete either a login, wallet or note entry?</b><br>
+To delete an entry, navigate to the particular tab and long click on the desired entry. A delete icon will appear on the upper right hand corner of the screen. You can select multiple entries and then tap the delete icon.
 </li>
 </ol>
