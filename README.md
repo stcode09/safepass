@@ -139,7 +139,7 @@ Your master password is never stored. Only you know your master password.
 Sorry, your Master Password cannot be recovered at this time. This is to ensure data security, so be sure to remember your Master Password. (Future versions will include a recovery option). 
 </li>
 <li name="q21"><b>What encryption scheme is used, and how secure is my data?</b><br>
-Your data is ecnrypted using <a href="http://en.wikipedia.org/wiki/Advanced_Encryption_Standard">AES-256 bit encryption</a> (Advanced Encryption Standard). This encryption standard is adopted by the U.S. government and is used worldwide. The key to encrypt the data is derived from the Master Password using a Password Based Key Derivation Function (PBKDF2 with Hmac SHA1). The key is salted with a randomly generated 256-bit salt using Java's SecureRandom class. The encryption is performed with 1024 iterations to encrypt the data. This makes brute force attacks more difficult.
+Your data is ecnrypted using <a href="http://en.wikipedia.org/wiki/Advanced_Encryption_Standard">AES-256 bit encryption</a> (Advanced Encryption Standard). This encryption standard is adopted by the U.S. government and is used worldwide. The key to encrypt the data is derived from the Master Password using a <a href="http://en.wikipedia.org/wiki/PBKDF2">Password Based Key Derivation Function</a> (PBKDF2 with Hmac SHA1). The key is salted with a randomly generated 256-bit salt using Java's SecureRandom class. The encryption is performed with 1024 iterations to encrypt the data. This makes brute force attacks more difficult.
 </li>
 </ol>
 
