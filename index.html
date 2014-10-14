@@ -67,7 +67,7 @@
 <ul>
 <li>The application encrypts all user data with <a href="http://en.wikipedia.org/wiki/Advanced_Encryption_Standard">AES-256 bit encryption</a>. </li>
 <li>The key to encrypt the data is derived from the Master Password using a <a href="http://en.wikipedia.org/wiki/PBKDF2">Password Based Key Derivation Function</a> (PBKDF2 with Hmac SHA1). The key is salted with a randomly generated 256-bit salt using Java's SecureRandom class. The encryption is performed with 1024 iterations to encrypt the data. This makes brute force attacks more difficult. </li>
-<li>The Master Password is never stored. Instead, it is transformed into a 512-bit salted hash (using PBKDF2 with Hmac SHA1). The result is then hashed 1024 times. The salt helps to protect from offline dictionary attacks and the iterations make brute force attacks more difficult. </li>
+<li>The Master Password is never stored. Instead, it is transformed into a one-way 512-bit salted hash (using PBKDF2 with Hmac SHA1). The result is then hashed 1024 times. The salt helps to protect from offline dictionary attacks and the repetitive hashing makes brute force attacks more difficult. </li>
 <li>The app auto-locks to prevent a security breach (customizable). </li>
 <li>Clears the clipboard after exiting the application (customizable). </li>
 <li>Limits the number of login attempts to prevent a security breach (customizable). </li>
