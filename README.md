@@ -30,7 +30,7 @@ SafePass is a password manager for Android devices that lets users securely stor
 <ul>
 <li>The application encrypts all user data with AES-256 bit encryption. </li>
 <li>The key to encrypt the data is derived from the Master Password using a Password Based Key Derivation Function (PBKDF2 with Hmac SHA1). The key is salted with a randomly generated 256-bit salt using Java's SecureRandom class. The encryption is performed with 1024 iterations to encrypt the data. This makes brute force attacks more difficult. </li>
-<li>The Master Password is never stored. Instead, it is transformed into a one-way 512-bit salted hash (using PBKDF2 with Hmac SHA1). The result is then hashed 1024 times. The salt helps to protect from offline dictionary attacks and the repititive hashing makes brute force attacks more difficult. </li>
+<li>The Master Password is never stored. Instead, it is transformed into a one-way 512-bit salted hash (using PBKDF2 with Hmac SHA1). The result is then hashed 1024 times. The salt helps to protect from offline dictionary attacks and the repetitive hashing makes brute force attacks more difficult. </li>
 <li>The app auto-locks to prevent a security breach (customizable). </li>
 <li>Clears the clipboard after exiting the application (customizable). </li>
 <li>Limits the number of login attempts to prevent a security breach (customizable). </li>
@@ -100,7 +100,7 @@ To generate a new password, tap on the generate icon located to the right of the
 There are two ways to change the password generator settings. One option is to go to the Settings menu and selecting the desired options under "Password Generator" (these settings are applied to all passwords). Another way is to long-click on the generate password icon located to the right of the password field (these settings apply only to the current password, and inherit from the main settings). 
 </li>
 <li name="q8"><b>How do I clear the clipboard?</b><br>
-To clear the clipboard, tap on the expand icon on the task-bar. A drop-down menu will appear. Then, tap on "Clear Clipboard". The application can also clear the clipboard automatically when it exits. To enable this, go to the Settings menu and make sure "Clear Clipboard" is enabled.
+To clear the clipboard, tap on the expand icon on the taskbar. A drop-down menu will appear. Then, tap on "Clear Clipboard". The application can also clear the clipboard automatically when it exits. To enable this, go to the Settings menu and make sure "Clear Clipboard" is enabled.
 </li>
 <li name="q9"><b>How do I customize the number of login attempts?</b><br>
 To customize the number of login attempts, go to the Settings menu and tap on "Login Attempts".
@@ -109,36 +109,38 @@ To customize the number of login attempts, go to the Settings menu and tap on "L
 To customize the number auto-lock timeout, go to the Settings menu and tap on "Auto-lock Timeout".
 </li>
 <li name="q11"><b>How do I change/reset the Master Password?</b><br>
-To change/reset the Master Password, tap on the expand icon on the task-bar. A drop-down menu will appear. Then, tap on "Reset Password".
+To change/reset the Master Password, tap on the expand icon on the taskbar. A drop-down menu will appear. Then, tap on "Reset Password".
 </li>
 <li name="q12"><b>How do I backup my data?</b><br>
-To backup your data, tap on the expand icon on the task-bar. A drop-down menu will appear. Then, tap on "Export Backup". This will write an encrypted backup file to your primiary storage destination (either internal storage, or SD Card).
+To backup your data, tap on the expand icon on the taskbar. A drop-down menu will appear. Then, tap on "Export Backup". This will write an encrypted backup file to your primary storage destination (either internal storage, or SD Card).
 </li>
 <li name="q13"><b>How do I import from a backup file?</b><br>
-To import your data, tap on the expand icon on the task-bar. A drop-down menu will appear. Then, tap on "Import Backup". Next, enter the password associated witht the backup file and tap "Import".
+To import your data, tap on the expand icon on the taskbar. A drop-down menu will appear. Then, tap on "Import Backup". Next, enter the password associated with the backup file and tap "Import".
 </li>
 <li name="q14"><b>How do I share my backup file?</b><br>
 To share your backup file, click on "Export Backup". After a successful export, a "Share File" dialog box will appear. Select the desired application from the dialog box.
 </li>
 <li name="q15"><b>Where is my backup file located?</b><br>
-To view the location of your backup file, go to the Settings menu and navigate to the "About" section. You will see your backup file location under "Bakcup Location".
+To view the location of your backup file, go to the Settings menu and navigate to the "About" section. You will see your backup file location under "Backup Location".
 </li>
 <li name="q16"><b>Why do I get the message "No backup folder found. Cannot export." when trying to export?</b><br>
 This message appears when the application cannot find your primary storage destination. It may be caused because your primary storage destination is either full, or temporarily un-mounted. 
 </li>
 <li name="q17"><b>Why do I get the message "No backup file found" when trying to import?</b><br>
-This message appears when the application cannot find your a backup file in the primay storage destination. To import from a backup, place the backup file named "backup.crypt" under the "SafePass" folder in your primary storage destination. If no such folder exists, then please create one manually. (A file browser will be added in the next release). 
+This message appears when the application cannot find your a backup file in the primary storage destination. To import from a backup, place the backup file named "backup.crypt" under the "SafePass" folder in your primary storage destination. If no such folder exists, then please create one manually. (A file browser will be added in the next release). 
 </li>
 <li name="q18"><b>Why don't I see any data when importing from a backup?</b><br>
-This could occur becuase the password you entered while importing may be incorrect. Please ensure that the password entered when importing from a backup is the one associated with that backup file. 
+This could occur because the password you entered while importing may be incorrect. Please ensure that the password entered when importing from a backup is the one associated with that backup file. 
 </li>
 <li name="q19"><b>Where is my Master Password stored?</b><br>
 Your master password is never stored. Only you know your master password. 
 </li>
 <li name="q20"><b>I forgot my Master Password. How can I recover it?</b><br>
-Sorry, your Master Password cannot be recovered at this time. This is to ensure data security, so be sure to remeber your Master Password. (Future versions will include a recovery option). 
+Sorry, your Master Password cannot be recovered at this time. This is to ensure data security, so be sure to remember your Master Password. (Future versions will include a recovery option). 
 </li>
 <li name="q21"><b>What encryption scheme is used, and how secure is my data?</b><br>
 Your data is ecnrypted using <a href="http://en.wikipedia.org/wiki/Advanced_Encryption_Standard">AES-256 bit encryption</a> (Advanced Encryption Standard). This encryption standard is adopted by the U.S. government and is used worldwide. The key to encrypt the data is derived from the Master Password using a Password Based Key Derivation Function (PBKDF2 with Hmac SHA1). The key is salted with a randomly generated 256-bit salt using Java's SecureRandom class. The encryption is performed with 1024 iterations to encrypt the data. This makes brute force attacks more difficult.
 </li>
 </ol>
+
+
